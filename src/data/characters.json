@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "name": "Aldor",
+    "race": "Elf",
+    "sex": "Muž",
+    "age": 236,
+    "charClass": "Kouzelník",
+    "background": "Přírodní talent",
+    "alignment": "Neutrální zlý"
+  },
+  {
+    "id": 2,
+    "name": "Brunhilda",
+    "race": "Člověk",
+    "sex": "Žena",
+    "age": 42,
+    "charClass": "Válečník",
+    "background": "Hrdina místního lidu",
+    "alignment": "Zákonný neutrální"
+  },
+  {
+    "id": 3,
+    "name": "Valgard",
+    "race": "Trpaslík",
+    "sex": "Muž",
+    "age": 125,
+    "charClass": "Zloděj",
+    "background": "Obchodník se vzácnými kameny",
+    "alignment": "Zákonný dobrý"
+  },
+  {
+    "id": 4,
+    "name": "Elysia",
+    "race": "Elfa",
+    "sex": "Žena",
+    "age": 172,
+    "charClass": "Hranostaj",
+    "background": "Zlodějka z vyšší společnosti",
+    "alignment": "Chaotický dobrý"
+  },
+  {
+    "id": 5,
+    "name": "Drahomir",
+    "race": "Člověk",
+    "sex": "Muž",
+    "age": 55,
+    "charClass": "Kněz",
+    "background": "Posel bohů",
+    "alignment": "Neutrální"
+  },
+  {
+    "id": 6,
+    "name": "Frida",
+    "race": "Trpaslice",
+    "sex": "Žena",
+    "age": 68,
+    "charClass": "Bard",
+    "background": "Písničkářka",
+    "alignment": "Chaotická neutrální"
+  },
+  {
+    "id": 7,
+    "name": "Vratislav",
+    "race": "Člověk",
+    "sex": "Muž",
+    "age": 34,
+    "charClass": "Čaroděj",
+    "background": "Zakázaného rodu",
+    "alignment": "Chaotický neutrální"
+  },
+  {
+    "id": 8,
+    "name": "Zorana",
+    "race": "Gnomka",
+    "sex": "Žena",
+    "age": 95,
+    "charClass": "Alchymistka",
+    "background": "Zelená čarodějka",
+    "alignment": "Zákonná neutrální"
+  },
+  {
+    "id": 9,
+    "name": "Cirran",
+    "race": "Polork",
+    "sex": "Muž",
+    "age": 28,
+    "charClass": "Barbar",
+    "background": "Vyvrženec",
+    "alignment": "Chaotický zlý"
+  },
+  {
+    "id": 10,
+    "name": "Lidmila",
+    "race": "Polokouzelník",
+    "sex": "Žena",
+    "age": 52,
+    "charClass": "Čarodějka",
+    "background": "Bylinkářka",
+    "alignment": "Neutrální zlá"
+  },
+  {
+    "id": 11,
+    "name": "Armagold",
+    "race": "Elf (Elf)",
+    "sex": "Žena",
+    "age": 126,
+    "charClass": "Ranger (Hraničář)",
+    "background": "Outlander (Větrolam)",
+    "alignment": "Chaotic Good (Chaoticky dobrý)"
+  },
+  {
+    "id": 12,
+    "name": "Brumel",
+    "race": "Dwarf (Trpaslík)",
+    "sex": "Muž",
+    "age": 57,
+    "charClass": "Cleric (Kněz)",
+    "background": "Acolyte (Akolita)",
+    "alignment": "Lawful Good (Zákonně dobrý)"
+  },
+  {
+    "id": 13,
+    "name": "Cedaris",
+    "race": "Human (Člověk)",
+    "sex": "Muž",
+    "age": 32,
+    "charClass": "Wizard (Kouzelník)",
+    "background": "Sage (Mudrc)",
+    "alignment": "Neutral Good (Neutrálně dobrý)"
+  },
+  {
+    "id": 14,
+    "name": "Delphina",
+    "race": "Halfling (Polokouzelník)",
+    "sex": "Žena",
+    "age": 43,
+    "charClass": "Bard (Pěvec)",
+    "background": "Entertainer (Zábavník)",
+    "alignment": "Chaotic Neutral (Chaoticky neutrální)"
+  },
+  {
+    "id": 15,
+    "name": "Elvariath",
+    "race": "Tiefling (Uvázlík)",
+    "sex": "Muž",
+    "age": 87,
+    "charClass": "Warlock (Čaroděj)",
+    "background": "Charlatan (Podvodník)",
+    "alignment": "Chaotic Evil (Chaoticky zlý)"
+  }
+]

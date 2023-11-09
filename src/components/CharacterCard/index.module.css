@@ -1,0 +1,4 @@
+.characters_sidebar:global(.offcanvas) {
+    background: #192734;
+    color: white;
+}
