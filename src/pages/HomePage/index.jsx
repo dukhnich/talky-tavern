@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import { createOpenAiClient, generate } from "../../api/generate";
-import Warehouse from "../..//hooks/Warehouse/index.jsx";
 import Header from "../../components/Header/index.jsx";
 import characters from "../../data/characters.json";
 import Button from "react-bootstrap/Button";
+import {useSelector} from "react-redux";
 
 const Home = () => {
-  const [apiKey, setApiKey] = useState("");
+  const apiKey = useSelector(state => state.chat.key);
   const [currentNpc, setCurrentNpc] = useState();
   const [message, setMessage] = useState("");
   const [result, setResult] = useState();
@@ -32,10 +32,7 @@ const Home = () => {
 
   return (
     <div>
-      <Warehouse index="npc-api-key" state={apiKey} setter={setApiKey} />
       <Header
-        apiKey={apiKey}
-        onSend={setApiKey}
         characters={characters}
         currentNpc={currentNpc}
         onSetNpc={setCurrentNpcById}

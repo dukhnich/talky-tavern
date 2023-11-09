@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 import KeyPopup from "../KeyPopup/index.jsx";
 import CharactersSidebar from "../CharactersSidebar/index.jsx";
-const Header = ({ apiKey, onSend, characters, currentNpc, onSetNpc }) => {
+const Header = ({ characters, currentNpc, onSetNpc }) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}>TalkyTavern</div>
@@ -13,7 +13,7 @@ const Header = ({ apiKey, onSend, characters, currentNpc, onSetNpc }) => {
         currentNpc={currentNpc}
         onSetNpc={onSetNpc}
       />
-      <KeyPopup apiKey={apiKey} onSend={onSend} />
+      <KeyPopup />
     </header>
   );
 };

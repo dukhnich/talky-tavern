@@ -4,14 +4,16 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useState } from "react";
-
-const KeyPopup = ({ apiKey, onSend }) => {
+import { useSelector, useDispatch } from 'react-redux'
+import { setKey } from "../../store/reducers/chatSlice";
+const KeyPopup = () => {
+  const apiKey = useSelector(state => state.chat.key);
+  const dispatch = useDispatch();
   const [isPopup, setPopupStatus] = useState(false);
   const [newApiKey, setNewApiKey] = useState(apiKey);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSend(newApiKey);
+    dispatch(setKey(newApiKey));
   };
   const togglePopup = () => setPopupStatus(!isPopup);
   return (
