@@ -4,6 +4,7 @@ export const chatSlice = createSlice({
     name: 'counter',
     initialState: {
         key: localStorage.getItem('npc-api-key'),
+        currentNpc: null,
     },
     reducers: {
         setKey: (state, action) => {
@@ -12,11 +13,14 @@ export const chatSlice = createSlice({
             if (value !== action.payload) {
                 localStorage.setItem('npc-api-key', action.payload || '');
             }
+        },
+        setCurrentNpc: (state, action) => {
+            state.currentNpc = action.payload;
         }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { setKey } = chatSlice.actions
+export const { setKey, setCurrentNpc } = chatSlice.actions
 
 export default chatSlice.reducer;

@@ -8,13 +8,9 @@ import {useSelector} from "react-redux";
 
 const Home = () => {
   const apiKey = useSelector(state => state.chat.key);
-  const [currentNpc, setCurrentNpc] = useState();
+  const currentNpc = useSelector(state => state.chat.currentNpc);
   const [message, setMessage] = useState("");
   const [result, setResult] = useState();
-  const setCurrentNpcById = (id) => {
-    const npc = (characters || []).find((c) => c.id === id);
-    setCurrentNpc(npc);
-  };
   useEffect(() => {
     createOpenAiClient(apiKey);
   }, [apiKey]);
@@ -32,11 +28,7 @@ const Home = () => {
 
   return (
     <div>
-      <Header
-        characters={characters}
-        currentNpc={currentNpc}
-        onSetNpc={setCurrentNpcById}
-      />
+      <Header characters={characters} />
       <main className={styles.main}>
         <img src="/dice-logo.png" alt="dice logo" className={styles.icon} />
         <form onSubmit={onSubmit}>

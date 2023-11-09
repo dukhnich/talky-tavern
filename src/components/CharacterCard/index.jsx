@@ -1,11 +1,16 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
-const CharacterCard = ({ character, currentNpc, onSetNpc }) => {
+import { useSelector, useDispatch } from "react-redux";
+import {setCurrentNpc} from "../../store/reducers/chatSlice";
+const CharacterCard = ({ character }) => {
   const { id, name, race, sex, age, charClass, background, alignment } =
     character;
   const list = { sex, age, charClass, background, alignment };
-  return (
+  const currentNpc = useSelector(state => state.chat.currentNpc);
+  const dispatch = useDispatch();
+
+    return (
     <Card className="mb-4">
       <Card.Header>NPC</Card.Header>
       <Card.Body>
@@ -26,7 +31,7 @@ const CharacterCard = ({ character, currentNpc, onSetNpc }) => {
         <Button
           variant="primary"
           disabled={currentNpc?.id === id}
-          onClick={() => onSetNpc(id)}
+          onClick={() => dispatch(setCurrentNpc(character))}
         >
           Choose
         </Button>
