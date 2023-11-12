@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { setKey } from "../../store/reducers/chatSlice";
 const KeyPopup = () => {
@@ -15,6 +15,11 @@ const KeyPopup = () => {
     e.preventDefault();
     dispatch(setKey(newApiKey));
   };
+  useEffect(() => {
+    if (apiKey !== newApiKey) {
+      setNewApiKey(apiKey);
+    }
+  }, [apiKey]);
   const togglePopup = () => setPopupStatus(!isPopup);
   return (
     <>

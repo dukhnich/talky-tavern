@@ -3,16 +3,12 @@ import { createSlice } from '@reduxjs/toolkit'
 export const chatSlice = createSlice({
     name: 'counter',
     initialState: {
-        key: localStorage.getItem('npc-api-key'),
+        key: '',
         currentNpc: null,
     },
     reducers: {
         setKey: (state, action) => {
             state.key = action.payload;
-            const value = localStorage.getItem('npc-api-key');
-            if (value !== action.payload) {
-                localStorage.setItem('npc-api-key', action.payload || '');
-            }
         },
         setCurrentNpc: (state, action) => {
             state.currentNpc = action.payload;

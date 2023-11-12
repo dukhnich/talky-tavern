@@ -5,12 +5,15 @@ import Header from "../../components/Header/index.jsx";
 import characters from "../../data/characters.json";
 import Button from "react-bootstrap/Button";
 import {useSelector} from "react-redux";
+import {useLocalStorage} from "../../hooks/useLocalStorage";
+import { setKey } from "../../store/reducers/chatSlice";
 
 const Home = () => {
   const apiKey = useSelector(state => state.chat.key);
   const currentNpc = useSelector(state => state.chat.currentNpc);
   const [message, setMessage] = useState("");
   const [result, setResult] = useState();
+  useLocalStorage('npc-api-key', apiKey, setKey );
   useEffect(() => {
     createOpenAiClient(apiKey);
   }, [apiKey]);
