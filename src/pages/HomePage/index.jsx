@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import {useSelector} from "react-redux";
 import {useLocalStorage} from "../../hooks/useLocalStorage";
 import { setKey } from "../../store/reducers/chatSlice";
-
+import Character from "../../model/Character";
 const Home = () => {
   const apiKey = useSelector(state => state.chat.key);
   const currentNpc = useSelector(state => state.chat.currentNpc);
@@ -20,7 +20,7 @@ const Home = () => {
   async function onSubmit(event) {
     event.preventDefault();
     try {
-      const data = await generate(currentNpc, message);
+      const data = await generate(new Character(currentNpc), message);
       setResult(data.result);
       // setMessage('');
     } catch (error) {

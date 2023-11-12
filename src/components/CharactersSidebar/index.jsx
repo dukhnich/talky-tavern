@@ -3,7 +3,8 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import CharacterCard from "../CharacterCard/index.jsx";
-const CharactersSidebar = ({ characters, currentNpc, onSetNpc }) => {
+import characters from "../../data/characters.json";
+const CharactersSidebar = ({ currentNpc, onSetNpc }) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);

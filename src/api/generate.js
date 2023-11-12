@@ -1,7 +1,10 @@
 import OpenAI from "openai";
+import ChatGPTFormatSerializer from "../services/serializer/ChatGPTFormatSerializer";
+import Character from "../model/Character";
 
 let openai;
 let npc;
+const serializer = new  ChatGPTFormatSerializer();
 export function createOpenAiClient(apiKey) {
   if (!apiKey) {
     return;
@@ -13,10 +16,10 @@ export function generateNPC(character) {
   npc = character;
 }
 function generatePrompt(character, message) {
-  const characterInfo = Object.entries(character || {}).reduce(
-    (str, [key, value]) => `${str}, your ${key} is ${value} `,
-    "",
-  );
+  if (!(character && character instanceof Character)) {
+    throw new Error(`Invalid argument exception: Instance of Character expected, ${typeof character} given`);
+  }
+  const characterInfo = character.serialize(serializer);
   return [
     {
       role: "system",
@@ -42,6 +45,7 @@ export async function generate(character, message) {
     console.log(completion);
     return { result: completion.choices[0].message.content };
   } catch (error) {
+    console.log(error)
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
       console.error(error.response.status, error.response.data);
