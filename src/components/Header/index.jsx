@@ -1,6 +1,7 @@
 import styles from "./index.module.css";
 import KeyPopup from "../KeyPopup/index.jsx";
-import CharactersSidebar from "../CharactersSidebar/index.jsx";
+import CharactersSidebar from "../CharactersSidebar";
+import SettingsSidebar from "../SettingsSidebar";
 import {useSelector} from "react-redux";
 const Header = ({ characters }) => {
     const currentNpc = useSelector(state => state.chat.currentNpc);
@@ -13,6 +14,7 @@ const Header = ({ characters }) => {
       <CharactersSidebar
         characters={characters}
       />
+      <SettingsSidebar />
       <KeyPopup />
     </header>
   );

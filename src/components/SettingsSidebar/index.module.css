@@ -1,0 +1,9 @@
+.characters_sidebar[class*='offcanvas'] {
+    background: #192734;
+    color: white;
+}
+
+.characters_title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.8rem;
+}

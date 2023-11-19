@@ -23,8 +23,8 @@ const KeyPopup = () => {
   const togglePopup = () => setPopupStatus(!isPopup);
   return (
     <>
-      <Button variant="primary" onClick={togglePopup}>
-        Add OpenApi Key
+      <Button variant={apiKey ? 'secondary' : 'primary'} onClick={togglePopup}>
+        {apiKey ? 'Change' : 'Add'} OpenApi Key
       </Button>
       <Modal
         show={isPopup}
