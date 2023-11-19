@@ -4,6 +4,9 @@ const JSONSerializer = class extends AbstractSerializer{
     serialize(object) {
         return JSON.stringify(object);
     };
+    deserialize(string) {
+        return JSON.parse(string);
+    };
 
 };
 
