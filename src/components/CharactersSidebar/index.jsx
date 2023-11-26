@@ -1,12 +1,30 @@
 import styles from "./index.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import CharacterCard from "../CharacterCard/index.jsx";
 import characters from "../../data/characters.json";
-const CharactersSidebar = ({ currentNpc, onSetNpc }) => {
+import {useLocalStorage} from "../../hooks/useLocalStorage";
+import Character from "../../model/Character";
+import {useSelector} from "react-redux";
+const CharactersSidebar = () => {
   const [show, setShow] = useState(false);
-
+    const currentNpc = useSelector(state => state.chat.currentNpc);
+    const [charactersList, setCharactersList] = useState();
+  const [currentNpc1, setCurrentNpc1] = useState();
+  useLocalStorage('npc-characters', charactersList, setCharactersList, true);
+  useLocalStorage('npc-current-character', currentNpc1, setCurrentNpc1, true);
+  useEffect(() => {
+      if (!(charactersList && charactersList.length)) {
+          setCharactersList(characters);
+      }
+  }, [])
+    useEffect(() => {
+        if (currentNpc) {
+            const n = new Character(currentNpc);
+            console.log(n, currentNpc)
+      setCurrentNpc1(n)}
+  }, [currentNpc])
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -31,7 +49,6 @@ const CharactersSidebar = ({ currentNpc, onSetNpc }) => {
             <CharacterCard
               key={c.id}
               currentNpc={currentNpc}
-              onSetNpc={onSetNpc}
               character={c}
             />
           ))}

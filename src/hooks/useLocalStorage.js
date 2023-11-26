@@ -1,24 +1,34 @@
 import { useEffect, } from "react";
 import { useDispatch } from 'react-redux'
+import JSONSerializer from "../services/serializer/JSONSerializer";
 
-export function useLocalStorage (index, storeValue, setter)  {
+export function useLocalStorage (index, storeValue, setter, isLocalSetter)  {
     const dispatch = useDispatch();
+    const serializer = new JSONSerializer();
+    // console.log(index, storeValue);
     useEffect(() => {
-        const handler = () => {
-            const value = localStorage.getItem(index);
+        const localStoreToStageTransport = () => {
+            const data = localStorage.getItem(index);
+            let value;
+            try {
+                value = JSON.parse(data)
+            } catch (e) {
+                value = data
+            }
             if (value !== storeValue) {
-                dispatch(setter(value));
+                isLocalSetter ? setter(value) : dispatch(setter(value));
             }
         };
         const localStorageListener = () => {
-            handler();
+            localStoreToStageTransport();
         };
         window.addEventListener("storage", localStorageListener);
-        handler();
+        localStoreToStageTransport();
         return () => {
             window.removeEventListener("storage", localStorageListener);
         };
     }, []);
+    // stageToLocalStoreTransport
     useEffect(() => {
         const value = localStorage.getItem(index);
         if (value !== storeValue) {

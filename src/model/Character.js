@@ -21,6 +21,9 @@ const Character = class {
             'alignment' : this.alignment,
         });
     }
+    deserialize(string, serializer) {
+        return serializer.deserialize(string);
+    }
 
 }
 export default Character;

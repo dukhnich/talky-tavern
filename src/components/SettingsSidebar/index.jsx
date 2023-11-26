@@ -63,7 +63,7 @@ const SettingsSidebar = () => {
             <Form.Select aria-label="Select Language">
                 <option>Select Language</option>
                 { languages.map(l =>
-                    <option value={l.value} key={l.key}>{l.label}</option>
+                    <option value={l.value} key={l.value}>{l.label}</option>
                 )}
             </Form.Select>
         </Offcanvas.Body>
