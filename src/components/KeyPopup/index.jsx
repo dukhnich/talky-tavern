@@ -40,11 +40,11 @@ const KeyPopup = () => {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <InputGroup className="mb-3">
-              <InputGroup.Text id="basic-addon1">🔑</InputGroup.Text>
+              <InputGroup.Text id="api-key">🔑</InputGroup.Text>
               <Form.Control
                 placeholder="OpenApi Key"
                 aria-label="OpenApi Key"
-                aria-describedby="basic-addon1"
+                aria-describedby="api-key"
                 type="password"
                 value={newApiKey}
                 onChange={(e) => setNewApiKey(e.target.value)}

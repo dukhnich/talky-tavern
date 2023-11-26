@@ -7,7 +7,10 @@ const Header = ({ characters }) => {
     const currentNpc = useSelector(state => state.chat.currentNpc);
     return (
     <header className={styles.header}>
-      <div className={styles.header__logo}>TalkyTavern</div>
+      <div className={styles.header__logo}>
+          <img src="/dice-logo.png" alt="dice logo" className={styles.icon} />
+          TalkyTavern
+      </div>
       <p className={styles.header__title}>
         Dialog with {currentNpc?.name || "NPC"}
       </p>

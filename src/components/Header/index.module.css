@@ -13,6 +13,11 @@
     font-size: 32px;
     font-family: 'Permanent Marker', cursive;
 }
+.header__logo .icon {
+    width: 34px;
+    margin-right: 8px;
+    filter: invert(100%);
+}
 
 .header__title {
     color: #ffffff;
