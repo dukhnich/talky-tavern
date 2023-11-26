@@ -48,10 +48,10 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <>
       <Header characters={characters} />
       <main className={styles.main}>
-        <div className="messages-list">
+        <div className={styles['messages-list']}>
           {messages.map((msg, i) => <Message message={msg} key={i} />)}
         </div>
         <Form onSubmit={onSubmit}>
@@ -64,13 +64,13 @@ const Home = () => {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             />
-            <Button variant="outline-primary" type="submit" disabled={!text}>
+            <Button variant="outline-light" type="submit" disabled={!text}>
               Send
             </Button>
           </InputGroup>
         </Form>
       </main>
-    </div>
+    </>
   );
 };
 

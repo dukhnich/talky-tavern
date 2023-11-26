@@ -1,11 +1,12 @@
 .header {
-    background-color: #16202C;
+    background-color: var(--primary-dark);
     color: #ffffff;
     padding: 10px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 16px;
+    border-bottom: 1px solid white;
 }
 
 .header__logo {

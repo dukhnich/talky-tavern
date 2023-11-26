@@ -41,6 +41,8 @@
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
+  background: var(--primary-dark);
+  flex-grow: 1;
 }
 .main h3 {
   font-size: 32px;
@@ -54,4 +56,7 @@
 .main .result {
   font-weight: bold;
   margin-top: 40px;
+}
+.messages-list {
+  flex-grow: 1;
 }
