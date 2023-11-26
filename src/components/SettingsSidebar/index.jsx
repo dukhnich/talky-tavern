@@ -3,40 +3,14 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
-const languages = [
-    { value: 1, label: "English" },
-    { value: 2, label: "German" },
-    { value: 3, label: "French" },
-    { value: 4, label: "Italian" },
-    { value: 5, label: "Spanish" },
-    { value: 6, label: "Portuguese" },
-    { value: 7, label: "Russian" },
-    { value: 8, label: "Polish" },
-    { value: 9, label: "Dutch" },
-    { value: 10, label: "Swedish" },
-    { value: 11, label: "Danish" },
-    { value: 12, label: "Norwegian" },
-    { value: 13, label: "Finnish" },
-    { value: 14, label: "Greek" },
-    { value: 15, label: "Turkish" },
-    { value: 16, label: "Czech" },
-    { value: 17, label: "Slovak" },
-    { value: 18, label: "Hungarian" },
-    { value: 19, label: "Romanian" },
-    { value: 20, label: "Bulgarian" },
-    { value: 21, label: "Ukrainian" },
-    { value: 22, label: "Serbian" },
-    { value: 23, label: "Croatian" },
-    { value: 24, label: "Slovenian" },
-    { value: 25, label: "Estonian" },
-    { value: 26, label: "Latvian" },
-    { value: 27, label: "Lithuanian" },
-    { value: 28, label: "Albanian" },
-    { value: 29, label: "Macedonian" },
-    { value: 30, label: "Irish" },
-];
+import languages from './../../data/languages.json'
+import {useDispatch, useSelector} from "react-redux";
+import { changeSettings } from "../../store/reducers/chatSlice";
+
 const SettingsSidebar = () => {
   const [show, setShow] = useState(false);
+  const settings = useSelector(state => state.chat.settings);
+  const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -60,10 +34,14 @@ const SettingsSidebar = () => {
         </Offcanvas.Header>
         <Offcanvas.Body>
             <Form.Label>Language</Form.Label>
-            <Form.Select aria-label="Select Language">
+            <Form.Select
+                aria-label="Select Language"
+                value={settings?.language}
+                onChange={e => dispatch(changeSettings({language: e.target.value}))}
+            >
                 <option>Select Language</option>
                 { languages.map(l =>
-                    <option value={l.value} key={l.value}>{l.label}</option>
+                    <option value={l.label} key={l.value}>{l.label}</option>
                 )}
             </Form.Select>
         </Offcanvas.Body>

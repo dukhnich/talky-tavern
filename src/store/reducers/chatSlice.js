@@ -5,10 +5,14 @@ export const chatSlice = createSlice({
     initialState: {
         key: '',
         currentNpc: null,
+        settings: null,
     },
     reducers: {
         setKey: (state, action) => {
             state.key = action.payload;
+        },
+        changeSettings: (state, action) => {
+            state.settings = {...state.settings, ...action.payload};
         },
         setCurrentNpc: (state, action) => {
             state.currentNpc = action.payload;
@@ -17,6 +21,6 @@ export const chatSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setKey, setCurrentNpc } = chatSlice.actions
+export const { setKey, setCurrentNpc, changeSettings } = chatSlice.actions
 
 export default chatSlice.reducer;

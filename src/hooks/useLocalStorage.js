@@ -11,9 +11,9 @@ export function useLocalStorage (index, storeValue, setter, isLocalSetter)  {
             const data = localStorage.getItem(index);
             let value;
             try {
-                value = JSON.parse(data)
+                value = JSON.parse(data);
             } catch (e) {
-                value = data
+                value = data;
             }
             if (value !== storeValue) {
                 isLocalSetter ? setter(value) : dispatch(setter(value));
@@ -30,9 +30,15 @@ export function useLocalStorage (index, storeValue, setter, isLocalSetter)  {
     }, []);
     // stageToLocalStoreTransport
     useEffect(() => {
-        const value = localStorage.getItem(index);
+        const data = localStorage.getItem(index);
+        let value;
+        try {
+            value = JSON.parse(data);
+        } catch (e) {
+            value = data;
+        }
         if (value !== storeValue) {
-            localStorage.setItem(index, storeValue);
+            localStorage.setItem(index, typeof storeValue === 'object' ? JSON.stringify(storeValue) : storeValue);
         }
     }, [storeValue]);
 };

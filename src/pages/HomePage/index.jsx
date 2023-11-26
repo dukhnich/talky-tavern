@@ -6,21 +6,23 @@ import characters from "../../data/characters.json";
 import Button from "react-bootstrap/Button";
 import {useSelector} from "react-redux";
 import {useLocalStorage} from "../../hooks/useLocalStorage";
-import { setKey } from "../../store/reducers/chatSlice";
+import { setKey, changeSettings } from "../../store/reducers/chatSlice";
 import Character from "../../model/Character";
 const Home = () => {
   const apiKey = useSelector(state => state.chat.key);
+  const settings = useSelector(state => state.chat.settings);
   const currentNpc = useSelector(state => state.chat.currentNpc);
   const [message, setMessage] = useState("");
   const [result, setResult] = useState();
   useLocalStorage('npc-api-key', apiKey, setKey );
+  useLocalStorage('npc-settings', settings, changeSettings );
   useEffect(() => {
     createOpenAiClient(apiKey);
   }, [apiKey]);
   async function onSubmit(event) {
     event.preventDefault();
     try {
-      const data = await generate(new Character(currentNpc), message);
+      const data = await generate(new Character(currentNpc), message, settings);
       setResult(data.result);
       // setMessage('');
     } catch (error) {
