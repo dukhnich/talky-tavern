@@ -17,13 +17,22 @@ const Home = () => {
   const currentNpc = useSelector(state => state.chat.currentNpc);
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
-  const [result, setResult] = useState();
   const addMessage = (msg) => setMessages([...messages, msg]);
   useLocalStorage('npc-api-key', apiKey, setKey );
   useLocalStorage('npc-settings', settings, changeSettings );
   useEffect(() => {
     createOpenAiClient(apiKey);
   }, [apiKey]);
+  useEffect(() => {
+    const sendMessage = async () => {
+      const data = await generate(new Character(currentNpc), messages, settings);
+      await addMessage(data.result.choices[0].message);
+      setText('');
+    }
+    if (messages.length && messages[messages.length - 1]?.role === 'user') {
+      sendMessage();
+    }
+  }, [messages]);
   async function onSubmit(event) {
     event.preventDefault();
     try {
@@ -31,10 +40,7 @@ const Home = () => {
         role: "user",
         content: text,
       };
-      await addMessage(message)
-      const data = await generate(new Character(currentNpc), messages, settings);
-      addMessage(data.result.choices[0].message);
-      setText('');
+      addMessage(message);
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
